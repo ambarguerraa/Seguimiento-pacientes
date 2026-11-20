@@ -1,0 +1,121 @@
+:root {
+  --cream: #fdf6ea;
+  --ice: #d4faff;
+  --teal: #028090;
+  --indigo: #37359a;
+  --font-main: 'Fira Sans', 'Noto Sans', 'Segoe UI', sans-serif;
+  --font-accent: 'Montserrat', 'Lato', Arial, sans-serif;
+  /* 1 unidad = 1 px en el diseño de referencia de 1366 × 768. */
+  --u: min(0.073206vw, 0.130208svh);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  position: relative;
+  isolation: isolate;
+  background: var(--indigo);
+  color: var(--cream);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--indigo) url('assets/aurora-poster.jpg') center / cover no-repeat;
+}
+.aurora__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.site-header {
+  position: absolute;
+  top: calc(79 * var(--u));
+  left: 6%;
+}
+.municipal-logo { display: block; width: calc(181 * var(--u)); height: auto; }
+.hero {
+  width: 100%;
+  min-height: 100svh;
+  padding: calc(158 * var(--u)) 24px calc(80 * var(--u));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.institution {
+  margin: 0;
+  color: var(--ice);
+  font-size: calc(16 * var(--u));
+  line-height: calc(18 * var(--u));
+  font-weight: 400;
+}
+.institution strong { font-weight: 700; }
+.hero-title {
+  margin: calc(50 * var(--u)) 0 0;
+  font-size: calc(64 * var(--u));
+  line-height: calc(63 * var(--u));
+  letter-spacing: calc(0.7 * var(--u));
+  font-weight: 400;
+}
+.hero-title__light { display: block; font-weight: 400; letter-spacing: calc(2 * var(--u)); }
+.hero-title strong { display: block; font-weight: 700; }
+.tagline {
+  margin: calc(42 * var(--u)) 0 0;
+  color: var(--ice);
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: calc(29 * var(--u));
+  line-height: calc(37 * var(--u));
+}
+.enter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: calc(70 * var(--u));
+  width: calc(228 * var(--u));
+  min-height: max(44px, calc(51 * var(--u)));
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: var(--cream);
+  font-family: var(--font-accent);
+  font-size: calc(19 * var(--u));
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: background .2s ease, transform .2s ease;
+}
+.enter-button:hover { background: #006e7e; transform: translateY(-2px); }
+.enter-button:active { transform: translateY(0); }
+.enter-button:focus-visible { outline: 3px solid var(--ice); outline-offset: 5px; }
+
+/* Pantallas pequeñas: se conserva la jerarquía sin recortar el contenido. */
+@media (max-width: 760px), (max-height: 500px) {
+  .site-header { position: relative; top: auto; left: auto; padding: 28px 24px 0; }
+  .municipal-logo { width: clamp(135px, 30vw, 181px); }
+  .hero { min-height: 0; padding: clamp(38px, 9vh, 76px) 22px 55px; }
+  .institution { font-size: 15px; line-height: 1.25; max-width: 350px; }
+  .hero-title { font-size: clamp(32px, 6.5vw, 57px); line-height: 1.06; letter-spacing: .3px; margin-top: 38px; }
+  .hero-title__light { letter-spacing: 1px; }
+  .desktop-break { display: none; }
+  .tagline { font-size: clamp(19px, 4vw, 27px); line-height: 1.35; margin-top: 30px; max-width: 580px; }
+  .enter-button { margin-top: 44px; width: min(228px, 100%); min-height: 51px; font-size: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora__video { display: none; }
+  .enter-button { transition: none; }
+}
+/* Página provisional de acceso, sin autenticación ni captura de datos. */
+.access .hero { justify-content: center; padding: 130px 24px 70px; gap: 24px; }
+.access .hero-title { margin: 0; font-size: clamp(32px, 5vw, 56px); line-height: 1.15; }
+.access .institution { max-width: 460px; font-size: 17px; line-height: 1.5; }
+.access .enter-button { margin-top: 16px; font-size: 16px; width: 228px; }
+@media (max-width: 760px) { .access .hero { padding: 70px 24px; } }

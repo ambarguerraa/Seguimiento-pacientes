@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#37359a">
+  <meta name="description" content="Unidad de seguimiento de pacientes en lista de espera COSAM, La Reina.">
+  <title>Plataforma de monitoreo y seguimiento clínico | COSAM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Video decorativo: se reproduce sin sonido y en bucle. -->
+  <div class="aurora" aria-hidden="true">
+    <video class="aurora__video" autoplay muted loop playsinline preload="metadata" poster="assets/aurora-poster.jpg" tabindex="-1">
+      <source src="assets/aurora.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <header class="site-header">
+    <img class="municipal-logo" src="assets/logo-la-reina.png" alt="La Reina, alma de barrio" width="181" height="63">
+  </header>
+
+  <main class="hero">
+    <p class="institution">Unidad de seguimiento de pacientes en lista<br class="desktop-break">
+      de espera · <strong>COSAM</strong></p>
+
+    <h1 class="hero-title">
+      <span class="hero-title__light">Plataforma</span>
+      <strong>de monitoreo y<br class="desktop-break"> seguimiento clínico</strong>
+    </h1>
+
+    <p class="tagline">El cuidado continúa incluso durante la espera</p>
+
+    <!-- Enlace relativo para que funcione también en GitHub Pages. -->
+    <a class="enter-button" href="login.html">INGRESAR</a>
+  </main>
+
+  <!-- Respeta la preferencia del usuario por reducir el movimiento. -->
+  <script>
+    const video = document.querySelector('.aurora__video');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function updateMotion() {
+      if (motionPreference.matches) video.pause();
+      else video.play().catch(() => {});
+    }
+    updateMotion();
+    motionPreference.addEventListener('change', updateMotion);
+  </script>
+</body>
+</html>
